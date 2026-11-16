@@ -1,16 +1,34 @@
-# data/
+# Kynora Data Directory (`data/`)
 
-This folder is reserved for real inbox data once Gmail sync exists (Phase 2).
+This directory serves as the root storage location for offline datasets, mailbox exports, and evaluation benchmarks used across the Kynora platform.
 
-For this prototype, the sample inbox lives in code instead, at
-`backend/app/data/sample_emails.py`. It needed to be inside the backend's
-Python package so the email service could import it directly without path
-hacks -- there's no functional difference from a JSON file here, it's just
-easier for FastAPI to load.
+---
 
-When Gmail integration lands, this folder becomes the place for whatever a
-real sync layer needs (a local cache, exported threads, etc.), and
-`sample_emails.py` stops being the data source -- but the shape it produces
-(`Email` objects going into `EmailService`) stays the same, since the API
-and AI layers were built against that shape, not against the sample file
-itself.
+## Data Architecture & Storage Locations
+
+In the current Kynora implementation, data is managed across three distinct layers:
+
+### 1. Production User & Email Storage (MySQL Database)
+- Real emails ingested via Google Gmail OAuth synchronization are **not** stored as flat files in this folder.
+- Instead, synced messages, user accounts, and OAuth tokens are persisted directly in **MySQL** across four primary tables:
+  - `users`: User profiles, PBKDF2 password hashes, and salts.
+  - `oauth_accounts`: Linked Google credentials with encrypted refresh/access tokens.
+  - `emails`: Ingested Gmail messages with full headers, bodies, thread IDs, read status, and user associations.
+  - `email_feedback`: User corrections on predicted priorities and categories for continuous learning.
+
+### 2. Sample In-Memory Inbox (`backend/app/data/sample_emails.py`)
+- For unauthenticated users or offline demonstrations, Kynora bundles a curated set of 8 structured emails in `backend/app/data/sample_emails.py`.
+- This ensures guest visitors can explore the dashboard, filter by priority, test the AI Reply Assistant, and inspect ML analytics without connecting a live Gmail account.
+
+### 3. Machine Learning Training Corpus (`backend/app/ml/training_data.py`)
+- The labeled dataset used to train the Scikit-learn classifiers (Urgent, High, Medium, Low) resides in `backend/app/ml/training_data.py`.
+- Serialized ML model artifacts (TfidfVectorizer, best classifier, K-Means clustering) are saved in `backend/app/ml/artifacts/`.
+
+---
+
+## Usage of this Directory
+
+This folder is designated for:
+- Exported mailbox dumps (e.g., `.mbox`, `.json`, `.csv`) for offline batch processing.
+- Benchmarking datasets for evaluating natural language processing or classifier accuracy.
+- Backup snapshots of database tables during migration or offline research.
