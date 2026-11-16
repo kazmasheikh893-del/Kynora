@@ -1,3 +1,22 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+backend/.env
+
+# Node / frontend
+frontend/node_modules/
+frontend/dist/
+frontend/.npm-cache/
+frontend/.env
+
+# Editors / OS
+.vscode/
+.DS_Store
+frontend/*.tsbuildinfo
+
+
 # Logs
 logs
 *.log
@@ -141,3 +160,9 @@ dist
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 .vite/
+
+# Secrets and credentials
+backend/secrets/
+backend/secrets/*
+*.pem
+*.key

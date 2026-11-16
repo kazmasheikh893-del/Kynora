@@ -1,0 +1,195 @@
+{
+  "status": "trained",
+  "dataset_size": 33,
+  "best_model": "Logistic Regression",
+  "models_evaluated": [
+    "Logistic Regression",
+    "K-Nearest Neighbors",
+    "Random Forest",
+    "Decision Tree"
+  ],
+  "metrics": {
+    "Logistic Regression": {
+      "test_accuracy": 0.5556,
+      "test_precision": 0.6111,
+      "test_recall": 0.5556,
+      "test_f1": 0.5683,
+      "high_priority_recall": 0.6667,
+      "cv_accuracy_mean": 0.5758,
+      "cv_accuracy_std": 0.1134,
+      "cv_f1_mean": 0.5552,
+      "confusion_matrix": [
+        [
+          2,
+          1,
+          0
+        ],
+        [
+          2,
+          1,
+          0
+        ],
+        [
+          0,
+          1,
+          2
+        ]
+      ],
+      "classes": [
+        "High",
+        "Medium",
+        "Low"
+      ]
+    },
+    "K-Nearest Neighbors": {
+      "test_accuracy": 0.4444,
+      "test_precision": 0.4444,
+      "test_recall": 0.4444,
+      "test_f1": 0.4444,
+      "high_priority_recall": 0.3333,
+      "cv_accuracy_mean": 0.5455,
+      "cv_accuracy_std": 0.0,
+      "cv_f1_mean": 0.5233,
+      "confusion_matrix": [
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          2,
+          1,
+          0
+        ],
+        [
+          0,
+          1,
+          2
+        ]
+      ],
+      "classes": [
+        "High",
+        "Medium",
+        "Low"
+      ]
+    },
+    "Random Forest": {
+      "test_accuracy": 0.5556,
+      "test_precision": 0.6333,
+      "test_recall": 0.5556,
+      "test_f1": 0.5667,
+      "high_priority_recall": 0.3333,
+      "cv_accuracy_mean": 0.3939,
+      "cv_accuracy_std": 0.0857,
+      "cv_f1_mean": 0.4056,
+      "confusion_matrix": [
+        [
+          1,
+          2,
+          0
+        ],
+        [
+          1,
+          2,
+          0
+        ],
+        [
+          0,
+          1,
+          2
+        ]
+      ],
+      "classes": [
+        "High",
+        "Medium",
+        "Low"
+      ]
+    },
+    "Decision Tree": {
+      "test_accuracy": 0.5556,
+      "test_precision": 0.3889,
+      "test_recall": 0.5556,
+      "test_f1": 0.4444,
+      "high_priority_recall": 0.0,
+      "cv_accuracy_mean": 0.3333,
+      "cv_accuracy_std": 0.0857,
+      "cv_f1_mean": 0.3203,
+      "confusion_matrix": [
+        [
+          0,
+          1,
+          2
+        ],
+        [
+          0,
+          2,
+          1
+        ],
+        [
+          0,
+          0,
+          3
+        ]
+      ],
+      "classes": [
+        "High",
+        "Medium",
+        "Low"
+      ]
+    }
+  },
+  "clusters": {
+    "0": {
+      "interpretation": "Actionable Academic & Exam Notices",
+      "top_keywords": [
+        "edu",
+        "stcollege",
+        "stcollege edu",
+        "semester",
+        "final",
+        "payment"
+      ]
+    },
+    "1": {
+      "interpretation": "Tech Recruitment & Internship Opportunities",
+      "top_keywords": [
+        "invitation",
+        "internship",
+        "test",
+        "interview",
+        "complete",
+        "test link"
+      ]
+    },
+    "2": {
+      "interpretation": "Newsletters & Industry Technical Digests",
+      "top_keywords": [
+        "com",
+        "github",
+        "new",
+        "14",
+        "favorite",
+        "security"
+      ]
+    },
+    "3": {
+      "interpretation": "Account Security & System Notifications",
+      "top_keywords": [
+        "learning",
+        "coursera",
+        "deep",
+        "deep learning",
+        "courses",
+        "linkedin"
+      ]
+    }
+  },
+  "vectorizer": {
+    "max_features": 600,
+    "ngram_range": [
+      1,
+      2
+    ],
+    "vocabulary_size": 600
+  }
+}
